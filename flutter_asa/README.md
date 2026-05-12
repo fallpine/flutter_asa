@@ -1,5 +1,7 @@
 # flutter_asa
 
+[![pub package](https://img.shields.io/pub/v/flutter_asa.svg)](https://pub.dev/packages/flutter_asa)
+
 `flutter_asa` 是一个用于注册上报、Apple Search Ads 归因数据上传、订阅交易数据上传的 Flutter 插件/工具。
 
 `flutter_asa` is a Flutter plugin/helper for registration reporting, Apple Search Ads attribution upload, and subscription transaction upload.
@@ -14,18 +16,30 @@
 
 ## 安装 / Installation
 
-在 `pubspec.yaml` 中添加 GitHub 依赖：
+插件已发布到 pub.dev：
 
-Add the GitHub dependency to your `pubspec.yaml`:
+The package is available on pub.dev:
+
+https://pub.dev/packages/flutter_asa
+
+推荐使用命令安装：
+
+Install with:
+
+```bash
+flutter pub add flutter_asa
+```
+
+也可以在 `pubspec.yaml` 中手动添加：
+
+Or add it manually to your `pubspec.yaml`:
 
 ```yaml
 dependencies:
-  flutter_asa:
-    git:
-      url: https://github.com/fallpine/flutter_asa.git
+  flutter_asa: ^1.0.0
 ```
 
-本地开发调试时，也可以使用 path 依赖：
+本地开发调试时，可以使用 path 依赖：
 
 For local development, use a path dependency:
 

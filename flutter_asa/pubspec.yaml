@@ -1,6 +1,6 @@
 name: flutter_asa
 description: "一个注册、归因工具"
-version: 1.0.0
+version: 1.0.1
 homepage: "https://github.com/fallpine/flutter_asa"
 
 environment:

@@ -85,12 +85,14 @@ class Asa {
     // 是否已发送归因数据
     if (await QsStorageTool.getBool(key: _kIsUploadAttributionDataKey) ??
         false) {
+      _print("已发送归因数据");
       return true;
     }
 
     // 没归因数据，且已注册，直接返回
     if (attribution == null &&
         (await QsStorageTool.getBool(key: _kIsRegisterKey) ?? false)) {
+      _print("已注册，但没有归因数据");
       return true;
     }
 
@@ -105,6 +107,7 @@ class Asa {
       bool isRegister =
           await QsStorageTool.getBool(key: _kIsRegisterKey) ?? false;
       if (isRegister && attributionToken.isEmpty) {
+        _print("已注册，但没有归因token");
         return false;
       }
 
@@ -141,7 +144,10 @@ class Asa {
         QsStorageTool.setBool(key: _kIsRegisterKey, value: true);
         if (attribution != null) {
           QsStorageTool.setBool(key: _kIsUploadAttributionDataKey, value: true);
+          _print("注册+归因成功");
           return true;
+        } else {
+          _print("注册成功");
         }
       }
       return false;
@@ -282,9 +288,11 @@ class Asa {
       );
 
       if (response?["code"] == 0) {
+        _print("上传订阅数据成功");
         onSuccess();
         return true;
       } else {
+        _print("上传订阅数据失败");
         return false;
       }
     } catch (e) {
