@@ -44,7 +44,7 @@ class Asa {
   }) async {
     var failureCount = 0;
 
-    while (true) {
+    while (failureCount < 10) {
       final success = await _runRegisterAttemptLocked(
         apiUrl: apiUrl,
         locale: locale,
@@ -55,8 +55,11 @@ class Asa {
       }
 
       failureCount += 1;
-      await Future.delayed(_retryDelay(failureCount));
+      if (failureCount < 10) {
+        await Future.delayed(_retryDelay(failureCount));
+      }
     }
+    return false;
   }
 
   /// 注册内部方法
@@ -149,7 +152,7 @@ class Asa {
   }
 
   /// 上传归因数据
-  static Future<void> uploadAttributionData({
+  static Future<bool> uploadAttributionData({
     required String apiUrl,
     required String locale,
   }) async {
@@ -161,7 +164,7 @@ class Asa {
         locale: locale,
       );
       if (success) {
-        return;
+        return true;
       }
 
       failureCount += 1;
@@ -169,6 +172,7 @@ class Asa {
         await Future.delayed(_retryDelay(failureCount));
       }
     }
+    return false;
   }
 
   /// 上传归因数据内部方法
@@ -213,7 +217,7 @@ class Asa {
   }) async {
     var failureCount = 0;
 
-    while (true) {
+    while (failureCount < 10) {
       final success = await _uploadSubscriptionData(
         apiUrl: apiUrl,
         transactionId: transactionId,
@@ -226,8 +230,11 @@ class Asa {
       }
 
       failureCount += 1;
-      await Future.delayed(_retryDelay(failureCount));
+      if (failureCount < 10) {
+        await Future.delayed(_retryDelay(failureCount));
+      }
     }
+    return false;
   }
 
   /// 上传订阅数据内部方法
