@@ -36,7 +36,7 @@ Or add it manually to your `pubspec.yaml`:
 
 ```yaml
 dependencies:
-  flutter_asa: ^1.0.0
+  flutter_asa: ^1.0.2
 ```
 
 本地开发调试时，可以使用 path 依赖：
@@ -74,7 +74,7 @@ void setupAsa() {
     aesIv: '1234567890123456',
     aesSctToken: 'your-sct-token',
     userId: 'user-id',
-    appVersion: '1.0.0',
+    appVersion: '1.0.2',
     deviceType: 'ios',
     deviceModel: 'iPhone',
     deviceOSVersion: '17.0',

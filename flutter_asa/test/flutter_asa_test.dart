@@ -21,7 +21,7 @@ void main() {
       aesIv: '1234567890123456',
       aesSctToken: 'sct-token',
       userId: 'user-id',
-      appVersion: '1.0.0',
+      appVersion: '1.0.2',
       deviceType: 'ios',
       deviceModel: 'iPhone',
       deviceOSVersion: '17.0',
