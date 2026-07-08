@@ -6,7 +6,17 @@ import 'package:plugin_platform_interface/plugin_platform_interface.dart';
 
 class MockFlutterAsaPlatform
     with MockPlatformInterfaceMixin
-    implements FlutterAsaPlatform {}
+    implements FlutterAsaPlatform {
+  @override
+  Future<String?> attributionToken() async {
+    return "";
+  }
+
+  @override
+  Future<Map<String, dynamic>?> requestAttributionDetails() async {
+    return <String, dynamic>{};
+  }
+}
 
 void main() {
   final FlutterAsaPlatform initialPlatform = FlutterAsaPlatform.instance;

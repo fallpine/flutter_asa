@@ -110,12 +110,6 @@
       "languageVersion": "3.11"
     },
     {
-      "name": "flutter_asa_attribution",
-      "rootUri": "file:///Users/gyhdev/.pub-cache/hosted/pub.dev/flutter_asa_attribution-1.0.0",
-      "packageUri": "lib/",
-      "languageVersion": "2.12"
-    },
-    {
       "name": "flutter_driver",
       "rootUri": "file:///Volumes/S7/DeveloperCache/fvm/versions/3.41.9/packages/flutter_driver",
       "packageUri": "lib/",

@@ -25,10 +25,11 @@ class FlutterAsaPlugin :
         call: MethodCall,
         result: Result
     ) {
-        if (call.method == "getPlatformVersion") {
-            result.success("Android ${android.os.Build.VERSION.RELEASE}")
-        } else {
-            result.notImplemented()
+        when (call.method) {
+            "getPlatformVersion" -> result.success("Android ${android.os.Build.VERSION.RELEASE}")
+            "attributionToken" -> result.success("")
+            "requestAttributionDetails" -> result.success(emptyMap<String, Any>())
+            else -> result.notImplemented()
         }
     }
 

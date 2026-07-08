@@ -141,14 +141,6 @@ packages:
       relative: true
     source: path
     version: "1.0.2"
-  flutter_asa_attribution:
-    dependency: transitive
-    description:
-      name: flutter_asa_attribution
-      sha256: d363527a326f56c1e7b3dbc224c7965cc939f6cc39614221d3f767ea21336daf
-      url: "https://pub.dev"
-    source: hosted
-    version: "1.0.0"
   flutter_driver:
     dependency: transitive
     description: flutter

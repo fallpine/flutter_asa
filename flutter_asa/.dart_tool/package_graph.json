@@ -5,11 +5,10 @@
   "packages": [
     {
       "name": "flutter_asa",
-      "version": "1.0.2",
+      "version": "1.0.3",
       "dependencies": [
         "encrypt",
         "flutter",
-        "flutter_asa_attribution",
         "ip_location",
         "net_dio_request",
         "plugin_platform_interface",
@@ -65,13 +64,6 @@
         "collection",
         "crypto",
         "pointycastle"
-      ]
-    },
-    {
-      "name": "flutter_asa_attribution",
-      "version": "1.0.0",
-      "dependencies": [
-        "flutter"
       ]
     },
     {

@@ -21,11 +21,6 @@ public final class GeneratedPluginRegistrant {
       Log.e(TAG, "Error registering plugin flutter_asa, com.example.flutter_asa.FlutterAsaPlugin", e);
     }
     try {
-      flutterEngine.getPlugins().add(new com.imlian.flutter_asa_attribution.FlutterAsaAttributionPlugin());
-    } catch (Exception e) {
-      Log.e(TAG, "Error registering plugin flutter_asa_attribution, com.imlian.flutter_asa_attribution.FlutterAsaAttributionPlugin", e);
-    }
-    try {
       flutterEngine.getPlugins().add(new dev.flutter.plugins.integration_test.IntegrationTestPlugin());
     } catch (Exception e) {
       Log.e(TAG, "Error registering plugin integration_test, dev.flutter.plugins.integration_test.IntegrationTestPlugin", e);

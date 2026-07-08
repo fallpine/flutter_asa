@@ -12,12 +12,6 @@
 @import flutter_asa;
 #endif
 
-#if __has_include(<flutter_asa_attribution/FlutterAsaAttributionPlugin.h>)
-#import <flutter_asa_attribution/FlutterAsaAttributionPlugin.h>
-#else
-@import flutter_asa_attribution;
-#endif
-
 #if __has_include(<integration_test/IntegrationTestPlugin.h>)
 #import <integration_test/IntegrationTestPlugin.h>
 #else
@@ -58,7 +52,6 @@
 
 + (void)registerWithRegistry:(NSObject<FlutterPluginRegistry>*)registry {
   [FlutterAsaPlugin registerWithRegistrar:[registry registrarForPlugin:@"FlutterAsaPlugin"]];
-  [FlutterAsaAttributionPlugin registerWithRegistrar:[registry registrarForPlugin:@"FlutterAsaAttributionPlugin"]];
   [IntegrationTestPlugin registerWithRegistrar:[registry registrarForPlugin:@"IntegrationTestPlugin"]];
   [IpLocationPlugin registerWithRegistrar:[registry registrarForPlugin:@"IpLocationPlugin"]];
   [NetDioRequestPlugin registerWithRegistrar:[registry registrarForPlugin:@"NetDioRequestPlugin"]];

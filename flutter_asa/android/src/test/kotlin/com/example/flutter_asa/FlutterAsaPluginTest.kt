@@ -24,4 +24,26 @@ internal class FlutterAsaPluginTest {
 
         Mockito.verify(mockResult).success("Android " + android.os.Build.VERSION.RELEASE)
     }
+
+    @Test
+    fun onMethodCall_attributionToken_returnsEmptyValue() {
+        val plugin = FlutterAsaPlugin()
+
+        val call = MethodCall("attributionToken", null)
+        val mockResult: MethodChannel.Result = Mockito.mock(MethodChannel.Result::class.java)
+        plugin.onMethodCall(call, mockResult)
+
+        Mockito.verify(mockResult).success("")
+    }
+
+    @Test
+    fun onMethodCall_requestAttributionDetails_returnsEmptyMap() {
+        val plugin = FlutterAsaPlugin()
+
+        val call = MethodCall("requestAttributionDetails", null)
+        val mockResult: MethodChannel.Result = Mockito.mock(MethodChannel.Result::class.java)
+        plugin.onMethodCall(call, mockResult)
+
+        Mockito.verify(mockResult).success(emptyMap<String, Any>())
+    }
 }

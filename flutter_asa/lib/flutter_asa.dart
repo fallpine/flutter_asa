@@ -1,12 +1,13 @@
 import 'dart:convert';
 
 import 'package:flutter/foundation.dart';
-import 'package:flutter_asa_attribution/flutter_asa_attribution.dart';
 import 'package:ip_location/ip_location.dart';
 import 'package:ip_location/ip_location_model.dart';
 import 'package:net_dio_request/net_request.dart';
 import 'package:qs_storage_tool/qs_storage_tool.dart';
 import 'package:encrypt/encrypt.dart' as encrypt;
+
+import 'flutter_asa_platform_interface.dart';
 
 class Asa {
   // 上传归因数据
@@ -99,8 +100,7 @@ class Asa {
     // 获取位置信息
     final loaction = await _getLocationByIp();
     // ASA归因token
-    String attributionToken =
-        await FlutterAsaAttribution.instance.attributionToken() ?? "";
+    String attributionToken = await _attributionToken();
 
     try {
       // 是否注册
@@ -187,10 +187,11 @@ class Asa {
     required String locale,
   }) async {
     // ASA归因数据
-    await FlutterAsaAttribution.instance.attributionToken();
+    String attributionToken = await _attributionToken();
+    _print("attributionToken: $attributionToken");
     try {
-      Map<String, dynamic>? attribution = await FlutterAsaAttribution.instance
-          .requestAttributionDetails();
+      Map<String, dynamic>? attribution = await _requestAttributionDetails();
+      _print("attribution: $attribution");
       if (attribution == null) {
         return false;
       }
@@ -255,8 +256,7 @@ class Asa {
       // 获取位置信息
       final loaction = await _getLocationByIp();
       // ASA归因token
-      String attributionToken =
-          await FlutterAsaAttribution.instance.attributionToken() ?? "";
+      String attributionToken = await _attributionToken();
 
       Map<String, dynamic> params = {
         "userId": _userId,
@@ -305,6 +305,22 @@ class Asa {
   static Future<IpLocationModel?> _getLocationByIp() async {
     IpLocationModel? location = await IpLocation.getIpLocation();
     return location;
+  }
+
+  /// 获取 ASA 归因 token，非 iOS 平台返回空值
+  static Future<String> _attributionToken() async {
+    if (defaultTargetPlatform != TargetPlatform.iOS) {
+      return "";
+    }
+    return await FlutterAsaPlatform.instance.attributionToken() ?? "";
+  }
+
+  /// 获取 ASA 归因数据，非 iOS 平台返回空数据
+  static Future<Map<String, dynamic>?> _requestAttributionDetails() async {
+    if (defaultTargetPlatform != TargetPlatform.iOS) {
+      return <String, dynamic>{};
+    }
+    return FlutterAsaPlatform.instance.requestAttributionDetails();
   }
 
   static Duration _retryDelay(int failureCount) {

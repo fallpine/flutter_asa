@@ -98,12 +98,6 @@
       "languageVersion": "3.9"
     },
     {
-      "name": "flutter_asa_attribution",
-      "rootUri": "file:///Users/gyhdev/.pub-cache/hosted/pub.dev/flutter_asa_attribution-1.0.0",
-      "packageUri": "lib/",
-      "languageVersion": "2.12"
-    },
-    {
       "name": "flutter_easyloading",
       "rootUri": "file:///Users/gyhdev/.pub-cache/hosted/pub.dev/flutter_easyloading-3.0.5",
       "packageUri": "lib/",

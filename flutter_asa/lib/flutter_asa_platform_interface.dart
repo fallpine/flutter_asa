@@ -22,4 +22,16 @@ abstract class FlutterAsaPlatform extends PlatformInterface {
     PlatformInterface.verifyToken(instance, _token);
     _instance = instance;
   }
+
+  /// Returns the Apple Search Ads attribution token on iOS.
+  Future<String?> attributionToken() {
+    throw UnimplementedError('attributionToken() has not been implemented.');
+  }
+
+  /// Returns Apple Search Ads attribution details on iOS.
+  Future<Map<String, dynamic>?> requestAttributionDetails() {
+    throw UnimplementedError(
+      'requestAttributionDetails() has not been implemented.',
+    );
+  }
 }

@@ -57,6 +57,18 @@ Then run:
 flutter pub get
 ```
 
+## iOS 接入配置 / iOS Setup
+
+在 Xcode 中打开 iOS 工程，选择 App Target，在 `General` -> `Frameworks, Libraries, and Embedded Content` 中添加以下系统库，并将 `Embed` 设置为 `Do Not Embed`：
+
+Open the iOS project in Xcode, select the App Target, then add the following system frameworks under `General` -> `Frameworks, Libraries, and Embedded Content`. Set `Embed` to `Do Not Embed` for each one:
+
+| Framework | Embed |
+| --- | --- |
+| `AdServices.framework` | `Do Not Embed` |
+| `AdSupport.framework` | `Do Not Embed` |
+| `iAd.framework` | `Do Not Embed` |
+
 ## 使用方法 / Usage
 
 ### 1. 初始化配置 / Configure
@@ -121,9 +133,9 @@ await Asa.uploadAttributionData(
 );
 ```
 
-`uploadAttributionData` 会通过 `flutter_asa_attribution` 获取 Apple Search Ads 归因详情，并复用注册接口上传归因数据。
+`uploadAttributionData` 会在 iOS 端通过插件内置原生桥接获取 Apple Search Ads 归因详情，并复用注册接口上传归因数据。Android 端暂返回空归因数据。
 
-`uploadAttributionData` gets Apple Search Ads attribution details through `flutter_asa_attribution` and uploads them through the registration API.
+`uploadAttributionData` gets Apple Search Ads attribution details through the built-in native bridge on iOS and uploads them through the registration API. Android currently returns empty attribution data.
 
 ### 4. 上传订阅数据 / Upload Subscription Data
 
@@ -191,7 +203,7 @@ The request is treated as successful when the server response contains `code == 
 - 必须先调用 `Asa.config`，再调用注册、归因上传或订阅上传方法。
 - `aesSecretKey` 和 `aesIv` 需要满足 AES 加密长度要求，例如 16、24 或 32 字节密钥，以及 16 字节 IV。
 - `apiUrl` 由你的服务端提供，注册和归因上传可以使用同一个接口。
-- 当前工具依赖 `flutter_asa_attribution`、`ip_location`、`qs_storage_tool`、`net_dio_request`、`encrypt` 等包。
+- 当前工具依赖 `ip_location`、`qs_storage_tool`、`net_dio_request`、`encrypt` 等包，iOS ASA 归因能力已内置到插件原生桥接中。
 - 请确保服务端使用相同的 AES key、IV、CBC 模式和填充方式解密请求体。
 
 ## Example

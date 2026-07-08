@@ -1,6 +1,6 @@
 name: flutter_asa
 description: "一个注册、归因工具"
-version: 1.0.2
+version: 1.0.3
 homepage: "https://github.com/fallpine/flutter_asa"
 
 environment:
@@ -13,7 +13,6 @@ dependencies:
   plugin_platform_interface: ^2.0.2
   qs_storage_tool: ^0.0.1 # 存储工具
   ip_location: ^1.0.0 # IP位置工具
-  flutter_asa_attribution: ^1.0.0 # 归因工具
   encrypt: ^5.0.3 # 加密工具
   net_dio_request: ^1.0.0 # 网络请求工具
 
